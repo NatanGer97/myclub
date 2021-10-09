@@ -1,0 +1,14 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+    {% if searched %}
+    <h1>You search for: {{ searched }} </h1>
+        <br>
+        {% for event in events %}
+            {{ event }}<br>
+        {% endfor %}
+
+    {% else %}
+    <h1>You forget to search for a event </h1>
+    {% endif %}
+{% endblock %}

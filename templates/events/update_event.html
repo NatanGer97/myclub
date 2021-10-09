@@ -1,0 +1,35 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        {% if event.manger == user %}
+            <h1> Update Event</h1>
+            <br>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <br>
+
+                <input type="submit" value="Update" class="btn btn-outline-secondary btn-sm">
+            </form>
+        {% else %}
+            <div style="text-align: center;">
+                <strong>Access is denied</strong><br>
+                Logged in user: {{ user }} <br>
+                Event manger: {{ event.manger }} <br>
+            </div>
+
+
+        {% endif %}
+    {% else %}
+        <h1>You must be logged in to view this pages..</h1>
+        <a href="{% url 'login' %}">Login here</a>
+    {% endif %}
+
+
+
+
+
+
+
+{% endblock %}
